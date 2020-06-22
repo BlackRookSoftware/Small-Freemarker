@@ -30,6 +30,8 @@ public abstract class FreemarkerViewDriver implements ViewDriver
 {
 	/** The Freemarker configuration. */
 	private Configuration configuration;
+	/** The forced output MIME-Type. */
+	private String mimeType;
 	
 	/**
 	 * Creates the Freemarker View Driver for Small.
@@ -38,6 +40,7 @@ public abstract class FreemarkerViewDriver implements ViewDriver
 	public FreemarkerViewDriver(Configuration configuration)
 	{
 		this.configuration = configuration;
+		this.mimeType = null;
 	}
 	
 	/**
@@ -51,6 +54,16 @@ public abstract class FreemarkerViewDriver implements ViewDriver
 		config.setTemplateLoader(loader);
 		config.setLocalizedLookup(false);
 		this.configuration = config;
+		this.mimeType = null;
+	}
+	
+	/**
+	 * Sets the forced MIME-Type.
+	 * @param mimeType the forced MIME-type for the output.
+	 */
+	public void setMimeType(String mimeType)
+	{
+		this.mimeType = mimeType;
 	}
 	
 	/**
@@ -156,7 +169,7 @@ public abstract class FreemarkerViewDriver implements ViewDriver
 			StringWriter sw = new StringWriter(2048);
 			Template template = configuration.getTemplate(viewName);
 			template.process(model, sw);
-			String mime = SmallUtils.getMIMEType(request.getServletContext(), viewName);
+			String mime = mimeType != null ? mimeType : SmallUtils.getMIMEType(request.getServletContext(), viewName);
 			SmallResponseUtils.sendStringData(response, mime, sw.toString());
 			return true;
 		} catch (IOException e) {
