@@ -28,7 +28,7 @@ Any servlet 2.X+ container implementation (javax.servlet-api.jar).
 
 ### Introduction
 
-This library contains classes for J2EE application creation and management.
+This library adds Apache Freemarker support to Small as a View Driver.
 
 
 ### Why?
