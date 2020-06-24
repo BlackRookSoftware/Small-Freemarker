@@ -89,5 +89,3 @@ terms of the LGPL v2.1 License which accompanies this distribution.
 A copy of the LGPL v2.1 License should have been included in this release (LICENSE.txt).
 If it was not, please contact us for a copy, or to notify us of a distribution
 that has not included it. 
-
-This contains code copied from Black Rook Base, under the terms of the MIT License (docs/LICENSE-BlackRookBase.txt).
