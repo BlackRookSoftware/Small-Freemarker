@@ -4,7 +4,7 @@ Copyright (c) 2020 Black Rook Software.
 [https://github.com/BlackRookSoftware/Small-Freemarker](https://github.com/BlackRookSoftware/Small-Freemarker)
 
 [Latest Release](https://github.com/BlackRookSoftware/Small-Freemarker/releases/latest)    
-[Online Javadoc](https://blackrooksoftware.github.io/Small-Freemarker/javadoc/)
+[Online Javadoc](https://blackrooksoftware.github.io/Small/javadoc/Freemarker)
 
 
 ### NOTICE
@@ -79,7 +79,7 @@ To clean up everything:
 
 ### Javadocs
 
-Online Javadocs can be found at: [https://blackrooksoftware.github.io/Small-Jetty/javadoc/](https://blackrooksoftware.github.io/Small-Jetty/javadoc/)
+Online Javadocs can be found at: [https://blackrooksoftware.github.io/Small/javadoc/Freemarker](https://blackrooksoftware.github.io/Small/javadoc/Freemarker)
 
 ### Other
 
