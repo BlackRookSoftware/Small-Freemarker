@@ -4,7 +4,7 @@ Copyright (c) 2020 Black Rook Software.
 [https://github.com/BlackRookSoftware/Small-Freemarker](https://github.com/BlackRookSoftware/Small-Freemarker)
 
 [Latest Release](https://github.com/BlackRookSoftware/Small-Freemarker/releases/latest)    
-[Online Javadoc](https://blackrooksoftware.github.io/Small-Freemarker/javadoc/)
+[Online Javadoc](https://blackrooksoftware.github.io/Small/javadoc/Freemarker)
 
 
 ### Required Libraries
@@ -73,7 +73,7 @@ To clean up everything:
 
 ### Javadocs
 
-Online Javadocs can be found at: [https://blackrooksoftware.github.io/Small-Jetty/javadoc/](https://blackrooksoftware.github.io/Small-Jetty/javadoc/)
+Online Javadocs can be found at: [https://blackrooksoftware.github.io/Small/javadoc/Freemarker](https://blackrooksoftware.github.io/Small/javadoc/Freemarker)
 
 ### Other
 
@@ -83,5 +83,3 @@ terms of the LGPL v2.1 License which accompanies this distribution.
 A copy of the LGPL v2.1 License should have been included in this release (LICENSE.txt).
 If it was not, please contact us for a copy, or to notify us of a distribution
 that has not included it. 
-
-This contains code copied from Black Rook Base, under the terms of the MIT License (docs/LICENSE-BlackRookBase.txt).
