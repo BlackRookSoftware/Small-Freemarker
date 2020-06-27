@@ -39,6 +39,8 @@ public abstract class FreemarkerViewDriver implements ViewDriver
 	private Configuration configuration;
 	/** The forced output MIME-Type. */
 	private String mimeType;
+	/** Init character capacity. */
+	private int capacity;
 	
 	/**
 	 * Creates the Freemarker View Driver for Small.
@@ -48,6 +50,7 @@ public abstract class FreemarkerViewDriver implements ViewDriver
 	{
 		this.configuration = configuration;
 		this.mimeType = null;
+		this.capacity = 4096;
 	}
 	
 	/**
@@ -71,6 +74,17 @@ public abstract class FreemarkerViewDriver implements ViewDriver
 	public void setMimeType(String mimeType)
 	{
 		this.mimeType = mimeType;
+	}
+	
+	/**
+	 * Sets the initial capacity of the output buffer for the view.
+	 * @throws IllegalArgumentException if capacity is &lt; 1.
+	 */
+	public void setCapacity(int capacity)
+	{
+		if (capacity <= 0)
+			throw new IllegalArgumentException("capacity cannot be < 1.");
+		this.capacity = capacity;
 	}
 	
 	/**
@@ -173,7 +187,7 @@ public abstract class FreemarkerViewDriver implements ViewDriver
 		if (!acceptViewName(viewName))
 			return false;
 		try {
-			StringWriter sw = new StringWriter(2048);
+			StringWriter sw = new StringWriter(capacity);
 			Template template = configuration.getTemplate(viewName);
 			template.process(model, sw);
 			String mime = mimeType != null ? mimeType : SmallUtils.getMIMEType(request.getServletContext(), viewName);
