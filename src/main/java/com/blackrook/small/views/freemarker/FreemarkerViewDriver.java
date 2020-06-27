@@ -78,7 +78,7 @@ public abstract class FreemarkerViewDriver implements ViewDriver
 	 * @param resourceRoot the root path for resources.
 	 * @return the created template loader.
 	 */
-	public static TemplateLoader createResourceLoader(final String resourceRoot)
+	public static TemplateLoader createResourceTemplateLoader(final String resourceRoot)
 	{
 		final String root = SmallUtils.removeBeginningSlash(SmallUtils.removeEndingSlash(resourceRoot));
 		return new TemplateLoader()
@@ -115,9 +115,9 @@ public abstract class FreemarkerViewDriver implements ViewDriver
 	 * @return the created template loader.
 	 * @throws IllegalArgumentException if fileRootPath is not a directory.
 	 */
-	public static TemplateLoader createFileLoader(final String fileRootPath)
+	public static TemplateLoader createFileTemplateLoader(final String fileRootPath)
 	{
-		return createFileLoader(new File(fileRootPath));
+		return createFileTemplateLoader(new File(fileRootPath));
 	}
 	
 	/**
@@ -126,7 +126,7 @@ public abstract class FreemarkerViewDriver implements ViewDriver
 	 * @return the created template loader.
 	 * @throws IllegalArgumentException if fileRoot is not a directory.
 	 */
-	public static TemplateLoader createFileLoader(final File fileRoot)
+	public static TemplateLoader createFileTemplateLoader(final File fileRoot)
 	{
 		if (!fileRoot.isDirectory())
 			throw new IllegalArgumentException("File root " + fileRoot + " is not a directory."); 
