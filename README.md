@@ -10,7 +10,7 @@ Copyright (c) 2020 Black Rook Software.
 ### Required Libraries
 
 Any servlet 2.X+ container implementation (javax.servlet-api.jar).  
-[Black Rook Small 0.1.0+](https://blackrooksoftware.github.io/Small)  
+[Black Rook Small 1.0.0+](https://blackrooksoftware.github.io/Small)  
 [Apache Freemarker](https://freemarker.apache.org/freemarkerdownload.html)  
 
 

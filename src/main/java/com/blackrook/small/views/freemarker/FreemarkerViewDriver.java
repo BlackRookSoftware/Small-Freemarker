@@ -78,6 +78,7 @@ public abstract class FreemarkerViewDriver implements ViewDriver
 	
 	/**
 	 * Sets the initial capacity of the output buffer for the view.
+	 * @param capacity the new initial capacity for the output buffer.
 	 * @throws IllegalArgumentException if capacity is &lt; 1.
 	 */
 	public void setCapacity(int capacity)

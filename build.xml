@@ -19,11 +19,16 @@
 	<property name="servlet.jar" value="javax.servlet-api-${servlet.lib.version}.jar" />
 	<property name="freemarker.lib.version" value="2.3.30" />
 	<property name="freemarker.jar" value="freemarker-${freemarker.lib.version}.jar" />
+	<property name="small.lib.version" value="1.0.0" />
+	<property name="small.tag" value="${small.lib.version}-RELEASE" />
+	<property name="small.project" value="blackrook-small-${small.lib.version}" />	
+	<property name="small.jar" value="${small.project}.jar" />
+	<property name="small.jar.src" value="${small.project}-sources.jar" />
 	
 	<!-- Project Info -->
 	<property name="project.archive" value="blackrook-small-freemarker" />
 	<property name="project.javadoc.title" value="Black Rook Small Freemarker View Handler" />
-	<property name="project.classpath" value="${dev.base}/${freemarker.jar}"/>
+	<property name="project.classpath" value="${dev.base}/${small.jar}${S}${dev.base}/${freemarker.jar}${S}${dev.base}/${servlet.jar}"/>
 	<property name="project.compiler.bootclasspath" value="" />
 	<property name="project.testclass" value=""/>
 	<property name="project.testclass.main" value=""/>
@@ -41,13 +46,10 @@
 		<maven-jar-javadoc-dl group-path="javax/servlet" artifact="javax.servlet-api" version="${servlet.lib.version}" />
 	</target>
 
-	<!--
 	<target name="dependency.small">
-		<maven-jar-dl group-path="javax/servlet" artifact="javax.servlet-api" version="${servlet.lib.version}" />
-		<maven-jar-sources-dl group-path="javax/servlet" artifact="javax.servlet-api" version="${servlet.lib.version}" />
-		<maven-jar-javadoc-dl group-path="javax/servlet" artifact="javax.servlet-api" version="${servlet.lib.version}" />
+		<github-dl repository="BlackRookSoftware/Small" tag="${small.tag}" file="${small.jar}" dest="${dependencies.dir}" />
+		<github-dl repository="BlackRookSoftware/Small" tag="${small.tag}" file="${small.jar.src}" dest="${dependencies.dir}" />	
 	</target>
-	-->
 
 	<target name="dependency.freemarker">
 		<maven-jar-dl group-path="org/freemarker" artifact="freemarker" version="${freemarker.lib.version}" />
@@ -55,13 +57,13 @@
 		<maven-jar-javadoc-dl group-path="org/freemarker" artifact="freemarker" version="${freemarker.lib.version}" />
 	</target>
 
-	<target name="dependencies" depends="init.dependencies, dependency.servlet, dependency.freemarker, dependency.properties" description="Downloads and compiles the dependencies.">
+	<target name="dependencies" depends="init.dependencies, dependency.servlet, dependency.small, dependency.freemarker, dependency.properties" description="Downloads and compiles the dependencies.">
 	</target>
 		
 	<target name="javadoc" depends="init.docs" description="Builds the documentation.">
         <javadoc access="protected" 
         	additionalparam="-J-Xmx512m  " author="true" 
-        	classpath="${bin.dir}${S}${dev.base}/${freemarker.jar}${S}${dev.base}/${servlet.jar}" 
+        	classpath="${bin.dir}${S}${dev.base}/${small.jar}${S}${dev.base}/${freemarker.jar}${S}${dev.base}/${servlet.jar}" 
         	doctitle="${project.javadoc.title}" 
         	sourcepath="${src.dir}" 
         	packagenames="${project.javadoc.packages}"
