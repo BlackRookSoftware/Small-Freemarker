@@ -1,6 +1,6 @@
 # Black Rook Small Freemarker View Driver
 
-Copyright (c) 2020 Black Rook Software.  
+Copyright (c) 2020-2024 Black Rook Software.  
 [https://github.com/BlackRookSoftware/Small-Freemarker](https://github.com/BlackRookSoftware/Small-Freemarker)
 
 [Latest Release](https://github.com/BlackRookSoftware/Small-Freemarker/releases/latest)    

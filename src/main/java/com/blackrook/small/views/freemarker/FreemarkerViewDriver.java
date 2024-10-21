@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Black Rook Software
+ * Copyright (c) 2020-2024 Black Rook Software
  * This program and the accompanying materials are made available under the 
  * terms of the GNU Lesser Public License v2.1 which accompanies this 
  * distribution, and is available at 
@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.io.StringWriter;
 import java.nio.charset.Charset;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.blackrook.small.exception.views.ViewProcessingException;
 import com.blackrook.small.roles.ViewDriver;
-import com.blackrook.small.util.SmallResponseUtils;
 import com.blackrook.small.util.SmallUtils;
 
 import freemarker.cache.TemplateLoader;
@@ -39,8 +37,6 @@ public abstract class FreemarkerViewDriver implements ViewDriver
 	private Configuration configuration;
 	/** The forced output MIME-Type. */
 	private String mimeType;
-	/** Init character capacity. */
-	private int capacity;
 	
 	/**
 	 * Creates the Freemarker View Driver for Small.
@@ -50,7 +46,6 @@ public abstract class FreemarkerViewDriver implements ViewDriver
 	{
 		this.configuration = configuration;
 		this.mimeType = null;
-		this.capacity = 4096;
 	}
 	
 	/**
@@ -80,12 +75,14 @@ public abstract class FreemarkerViewDriver implements ViewDriver
 	 * Sets the initial capacity of the output buffer for the view.
 	 * @param capacity the new initial capacity for the output buffer.
 	 * @throws IllegalArgumentException if capacity is &lt; 1.
+	 * @deprecated Since 1.0.1, this has no effect.
 	 */
+	@Deprecated
 	public void setCapacity(int capacity)
 	{
 		if (capacity <= 0)
 			throw new IllegalArgumentException("capacity cannot be < 1.");
-		this.capacity = capacity;
+		// NO-OP since 1.0.1
 	}
 	
 	/**
@@ -188,11 +185,10 @@ public abstract class FreemarkerViewDriver implements ViewDriver
 		if (!acceptViewName(viewName))
 			return false;
 		try {
-			StringWriter sw = new StringWriter(capacity);
 			Template template = configuration.getTemplate(viewName);
-			template.process(model, sw);
 			String mime = mimeType != null ? mimeType : SmallUtils.getMIMEType(request.getServletContext(), viewName);
-			SmallResponseUtils.sendStringData(response, mime, sw.toString());
+			response.setContentType(mime);
+			template.process(model, response.getWriter());
 			return true;
 		} catch (IOException e) {
 			throw new ViewProcessingException("I/O error occurred!", e);
