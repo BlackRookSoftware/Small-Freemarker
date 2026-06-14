@@ -10,7 +10,7 @@
 	<version>1.0.1</version>
 	<name>Small-Freemarker</name>
 	<description>Adds Apache Freemarker support to Black Rook Small as a View Driver.</description>
-	<url>https://blackrooksoftware.github.io/Small-Freemarker/</url>
+	<url>https://blackrooksoftware.github.io/Small/</url>
 
 	<licenses>
 		<license>
